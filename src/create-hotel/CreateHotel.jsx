@@ -14,7 +14,7 @@ import { AiOutlineLoading3Quarters } from "react-icons/ai";
 function CreateHotel() {
 
 
-
+    const apiKey = import.meta.env.VITE_GOOGLE_APIKEY;
 
     const [place, setPlace] = useState();
     const [formData, setFormData] = useState([])
@@ -120,7 +120,7 @@ function CreateHotel() {
 
 
           <GooglePlacesAutocomplete
-            apiKey="AIzaSyAAzEP47wo3n1ydCp-WTdZ6_qAWWPfWrNA"
+            apiKey={apiKey}
             selectProps={{
               place,
               onChange: (v) => {
