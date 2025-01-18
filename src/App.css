@@ -1,6 +1,6 @@
 /* Set a unique background image */
 .background-container {
-    background: linear-gradient(rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.6)),url('hero2.webp'); /* Replace with your image URL */
+    background: linear-gradient(rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.6)),url('https://i0.wp.com/thetravellingtedaldi.com/wp-content/uploads/2024/02/winter-in-switzerland.jpg?fit=1440,811&ssl=1'); /* Replace with your image URL */
     background-size: cover;
     background-position: center;
     background-attachment: fixed;
