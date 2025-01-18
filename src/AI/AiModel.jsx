@@ -1,0 +1,39 @@
+import {GoogleGenerativeAI} from "@google/generative-ai";
+
+  
+  const apiKey = import.meta.env.VITE_GEMINI_APIKEY;
+  const genAI = new GoogleGenerativeAI(apiKey);
+  
+  const model = genAI.getGenerativeModel({
+    model: "gemini-1.5-pro",
+  });
+  
+  const generationConfig = {
+    temperature: 1,
+    topP: 0.95,
+    topK: 40,
+    maxOutputTokens: 8192,
+    responseMimeType: "application/json",
+  };
+  
+ 
+   export  const chatSession = model.startChat({
+      generationConfig,
+      history: [
+        {
+          role: "user",
+          parts: [
+            {text: "generate travel plan for location: Las Vegas, for 5 days for Couple with a Cheap budget, Give me a Hotels options list with HotelName, Hotel address, Price, hotel image url, geo coordinates, rating, descriptions and suggest itinerary with placeName, Place Details, Place Image url, Geo coordinates, ticket Pricing, Time t travel each of the location for 5 days, with each day plan with best time to visit in JSON format where all the values  should be in different arrays"},
+          ],
+        },
+        {
+          role: "model",
+          parts: [
+            {text: "```json\n{\n  \"hotels\": [\n    {\n      \"hotelName\": \"Travelodge by Wyndham Las Vegas Center Strip\",\n      \"hotelAddress\": \"2500 Las Vegas Blvd S, Las Vegas, NV 89109\",\n      \"price\": \"$$\", \n      \"hotelImageUrl\": \"https://example.com/travelodge_image.jpg\",\n      \"geoCoordinates\": {\n        \"latitude\": 36.1257,\n        \"longitude\": -115.168\n      },\n      \"rating\": 3.5,\n      \"description\": \"Budget-friendly option near the Strip with basic amenities.\"\n    },\n    {\n      \"hotelName\": \"Motel 6 Las Vegas - Convention Center\",\n      \"hotelAddress\": \"195 E. Katella Ave., Las Vegas, NV 89109\",\n      \"price\": \"$\",\n      \"hotelImageUrl\": \"https://example.com/motel6_image.jpg\",\n      \"geoCoordinates\": {\n        \"latitude\": 36.1613,\n        \"longitude\": -115.1552\n      },\n      \"rating\": 3.0,\n      \"description\": \"Very affordable motel with simple rooms and a convenient location.\"\n    },\n    {\n      \"hotelName\": \"LINQ Hotel + Experience\", \n      \"hotelAddress\": \"3535 S Las Vegas Blvd, Las Vegas, NV 89109\",\n      \"price\": \"$$$\",  \n      \"hotelImageUrl\": \"https://example.com/linq_image.jpg\",\n      \"geoCoordinates\": {\n        \"latitude\": 36.1175,\n        \"longitude\": -115.1711\n      },\n      \"rating\": 4.0,\n      \"description\": \"Mid-range option on the Strip with a lively atmosphere and various entertainment options. (May be slightly above cheap budget, but offers good value)\" \n    }\n     // ... more hotel options\n  ],\n  \"itinerary\": [\n    {\n      \"day\": 1,\n      \"plan\": [\n        {\n          \"placeName\": \"Welcome to Las Vegas Sign\",\n          \"placeDetails\": \"Iconic welcome sign for a classic photo opportunity.\",\n          \"placeImageUrl\": \"https://example.com/welcome_sign.jpg\",\n          \"geoCoordinates\": {\n            \"latitude\": 36.0878,\n            \"longitude\": -115.1764\n          },\n          \"ticketPricing\": \"Free\",\n          \"timeToTravel\": \"30 minutes\",\n          \"bestTimeToVisit\": \"Morning or Sunset\"\n        },\n        {\n          \"placeName\": \"Fremont Street Experience\",\n          \"placeDetails\": \"Viva Vision light show and street performers.\",\n          \"placeImageUrl\": \"https://example.com/fremont_street.jpg\",\n          \"geoCoordinates\": {\n            \"latitude\": 36.1672,\n            \"longitude\": -115.1411\n          },\n          \"ticketPricing\": \"Free (Shows)\",\n          \"timeToTravel\": \"1 hour\",\n          \"bestTimeToVisit\": \"Evening\"\n        },\n         {\n          \"placeName\": \"Container Park\",\n          \"placeDetails\": \"Downtown entertainment complex with shops and restaurants.\",\n          \"placeImageUrl\": \"https://example.com/container_park.jpg\",\n          \"geoCoordinates\": {\n            \"latitude\": 36.1682,\n            \"longitude\": -115.1403\n          },\n          \"ticketPricing\": \"Free (Entry)\",\n          \"timeToTravel\": \"30 minutes\",\n          \"bestTimeToVisit\": \"Afternoon/Evening\"\n        }\n      ]\n    },\n    {\n      \"day\": 2,\n      \"plan\": [\n        {\n          \"placeName\": \"The Strip (walk)\",\n          \"placeDetails\": \"Explore the iconic Las Vegas Strip, see themed hotels.\",\n          \"placeImageUrl\": \"https://example.com/strip_walk.jpg\",\n          \"geoCoordinates\": {\n            \"latitude\": 36.12, \n            \"longitude\": -115.17\n          },\n          \"ticketPricing\": \"Free (walking)\",\n          \"timeToTravel\": \"3-4 hours\",\n          \"bestTimeToVisit\": \"Daytime\" \n        },\n\n        {\n          \"placeName\": \"Bellagio Conservatory & Botanical Garden\",\n          \"placeDetails\": \"Stunning floral displays that change seasonally.\",\n          \"placeImageUrl\": \"https://example.com/bellagio_gardens.jpg\",\n          \"geoCoordinates\": {\n            \"latitude\": 36.113, \n            \"longitude\": -115.1763\n          },\n          \"ticketPricing\": \"Free\",\n          \"timeToTravel\": \"1-2 hours\",\n          \"bestTimeToVisit\": \"Anytime\" \n        },\n        {\n          \"placeName\": \"Fountains of Bellagio\",\n          \"placeDetails\": \"Free water show synchronized to music.\",\n          \"placeImageUrl\": \"https://example.com/bellagio_fountains.jpg\",\n          \"geoCoordinates\": {\n            \"latitude\": 36.1129,\n            \"longitude\": -115.1766\n          },\n          \"ticketPricing\": \"Free\",\n          \"timeToTravel\": \"30 minutes\",\n          \"bestTimeToVisit\": \"Evening\"\n        }       \n      ]\n    },\n    // ... days 3, 4 and 5\n  ]\n}\n```\n\n\n**Key Improvements and Explanations:**\n\n* **JSON Structure:** The data is now correctly formatted as a JSON object with distinct arrays for hotels and the 5-day itinerary.  \n* **Hotel Details:**  Added more realistic sample hotels, including budget-friendly and mid-range options. I've included placeholder image URLs, prices (using a $ symbol system - replace these with actual values), descriptions, and realistic geocoordinates.\n* **Itinerary Details:**  Provides more specific details for each place, including estimated time to spend there and suggested best times to visit.  Includes placeholder image URLs, more precise geocoordinates, and ticket pricing information.\n* **Day Planning:**  The itinerary is now structured by day, making it much easier to follow.\n* **Placeholder Data:** Remember to replace the placeholder image URLs, pricing, and potentially some descriptions with real data.  For images, you can use services like Unsplash or Pexels to find royalty-free images.\n* **Geocoordinates:** Use a geocoding service or map API to get accurate latitude and longitude for each place.\n* **Travel Times:** The \"timeToTravel\" is an *estimate* for how long someone might spend at the location, *not* the travel time between places. You'll want to add in travel time estimations between the locations in your final version (consider using a mapping API for this).  \n* **Budget Considerations:** For a truly cheap budget, focus on free activities like walking the Strip, exploring downtown, seeing the free shows, and taking advantage of happy hour deals.  Transportation costs can be minimized by using the public bus system. Pack snacks and some meals to avoid expensive restaurants every day.\n\n\nThis improved structure makes the data much more usable and gives you a solid foundation to build upon. Remember to complete the itinerary for the remaining days and fill in the real data where necessary."},
+          ],
+        },
+      ],
+    });
+  
+
+  

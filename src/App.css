@@ -1,0 +1,68 @@
+/* Set a unique background image */
+.background-container {
+    background: linear-gradient(rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.6)),url('hero2.webp'); /* Replace with your image URL */
+    background-size: cover;
+    background-position: center;
+    background-attachment: fixed;
+    height: 86vh;
+    position: relative;
+    overflow: hidden;
+    border-radius: 0px 0px 15rem 15rem;
+  }
+  
+  /* Floating text styling */
+  .floating-text {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    text-align: center;
+     /* Optional for better readability */
+  }
+  
+  /* Animating the floating effect */
+  .floating-text h1, .floating-text p {
+    animation: float 3s infinite ease-in-out;
+  }
+  
+  @keyframes float {
+    0%, 100% {
+      transform: translate(-50%, -50%) translateY(0);
+    }
+    50% {
+      transform: translate(-50%, -50%) translateY(-10px);
+    }
+  }
+
+
+
+
+  .flight-background{
+    background: linear-gradient(rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.6)),url('https://wallpapers.com/images/hd/sunset-silhouette-airplane-brh2gmlmjhnj74dv.jpg'); /* Replace with your image URL */
+    background-size: cover;
+    background-position: center;
+    background-attachment: fixed;
+    height: 100vh;
+    position: relative;
+    overflow: hidden;
+  }
+
+
+  .hotel-background{
+    background: linear-gradient(rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.6)),url('https://www.usatoday.com/gcdn/-mm-/05b227ad5b8ad4e9dcb53af4f31d7fbdb7fa901b/c=0-64-2119-1259/local/-/media/USATODAY/USATODAY/2014/08/13/1407953244000-177513283.jpg'); /* Replace with your image URL */
+    background-size: cover;
+    background-position: center;
+    background-attachment: fixed;
+    height: 100vh;
+    position: relative;
+    overflow: hidden;
+  }
+
+  .trip-background{
+    background: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)),url('https://www.thestupidbear.com/wp-content/uploads/2023/03/How-to-travel-to-Kedarnath.jpg'); /* Replace with your image URL */
+    background-size: cover;
+    background-position: center;
+    background-attachment: fixed;
+    height: 100vh;
+    position: relative;
+    overflow: hidden;
+  }
